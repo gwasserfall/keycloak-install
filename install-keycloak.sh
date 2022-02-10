@@ -43,7 +43,7 @@ perl -i -p -e 's/\@MYSQL_PASSWORD\@/$ENV{MYSQL_PASSWORD}/' "$INSTALL_DIR/standal
 
 # Add database driver
 mkdir -p "$INSTALL_DIR/modules/system/layers/keycloak/com/mysql/main"
-wget -O "$INSTALL_DIR/modules/system/layers/keycloak/com/mysql/main/mysql-connector-java-8.0.22.jar" https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.22/mysql-connector-java-8.0.22.jar
+wget -O "$INSTALL_DIR/modules/system/layers/keycloak/com/mysql/main/mysql-connector-java-8.0.23.jar" https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.23/mysql-connector-java-8.0.23.jar
 cp ./config/db-connector-module.xml "$INSTALL_DIR/modules/system/layers/keycloak/com/mysql/main/module.xml"
 
 
@@ -55,8 +55,8 @@ apt update
 apt install nginx -y
 
 # Move certificate and key to system dirs
-cp ./certs/certificate.crt /etc/ssl/certs/certificate.crt
-cp ./certs/private.key /etc/ssl/certs/private.key
+cp ./certs/certificate.crt /etc/ssl/certs/ssl-cert-snakeoil.pem
+cp ./certs/private.key /etc/ssl/private/ssl-cert-snakeoil.key
 
 # Replace nginx config and restart
 cp ./config/nginx.conf /etc/nginx/sites-enabled/default
